@@ -8,40 +8,53 @@ public class Main {
 	// write your code here
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter num of fibonacci numbers:");
-        int n = scanner.nextInt();
+        String[][] ticTacToe = new String[3][3];
 
-        int[] fibonacci = new int[n];
-        fibonacci[0] = 0;
-        fibonacci[1] = 1;
-        for (int i = 2; i < n; i++) {
-            fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
-        }
-
-        for (int i = 0; i < fibonacci.length; i++) {
-           // System.out.print(fibonacci[i] + (i < n - 1 ? ", " : ""));
-        }
-
-        int x = n % 5 == 0 ? n / 5 : n / 5 + 1;
-        int[][] fibD = new int[x][5];
-
-        int counter = 0;
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (counter >= n)
-                    break;
-                fibD[i][j] = fibonacci[counter];
-                counter++;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                ticTacToe[i][j] = scanner.next();
             }
         }
-        for (int i = 0; i < fibD.length; i++) {
-            for (int j = 0; j < fibD[i].length; j++) {
-                System.out.print(fibD[i][j] +", ");
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(ticTacToe[i][j] + " ");
             }
             System.out.println();
         }
 
+        //test for win in rows
+        for (int i = 0; i < 3; i++) {
+            if (ticTacToe[i][0].equals(ticTacToe[i][1])
+                    && ticTacToe[i][1].equals(ticTacToe[i][2])){
+                System.out.println(ticTacToe[i][1] + " wins");
+                break;
+            }
+        }
 
+
+        //test for win in columns
+        for (int i = 0; i < 3; i++) {
+            if (ticTacToe[0][i].equals(ticTacToe[1][i])
+                    && ticTacToe[1][i].equals(ticTacToe[2][i])){
+                System.out.println(ticTacToe[i][1] + " wins");
+                break;
+            }
+        }
+
+        //win in the first diagonal
+        if (ticTacToe[0][0].equals(ticTacToe[1][1])
+                && ticTacToe[1][1].equals(ticTacToe[2][2])){
+            System.out.println(ticTacToe[0][0] + " wins");
+        }
+
+        //win in the 2nd diagonal
+        if (ticTacToe[0][2].equals(ticTacToe[1][1])
+                && ticTacToe[1][1].equals(ticTacToe[2][0])){
+            System.out.println(ticTacToe[1][1] + " wins");
+        }
+
+        if ("".equals(null));
 
     }
 }
